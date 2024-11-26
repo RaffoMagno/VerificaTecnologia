@@ -1,8 +1,10 @@
 var express = require('express');
 var app = express();
 const path = require('path');
-var cors = require('cors'); //HTTP access control (CORS) for cross origin requests
+var cors = require('cors');
 app.use(cors());
+
+const fs = require('fs');
 
 app.use(express.static(path.join(__dirname, 'www')));
 app.get('/',function(req,res){
@@ -10,7 +12,7 @@ app.get('/',function(req,res){
 });
 
 app.get('/api/mante', (req, res) => {
-    fs.readFile('api/products/mante.json', 'utf8', (err, data) => {
+    fs.readFile('api/mante/mante.json', 'utf8', (err, data) => {
       if (err) {
         console.error('Errore durante la lettura del file JSON:', err);
         return res.status(500).send('Errore interno del server');
