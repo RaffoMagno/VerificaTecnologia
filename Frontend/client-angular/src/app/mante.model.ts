@@ -2,7 +2,7 @@ export interface Mante {
     _id: string;
     estinzione: Boolean;
     apertura_alare: string;
-    immagine: number;
+    immagine: string;
     eta: Number;
     colore: string;
     nome_specie: string;

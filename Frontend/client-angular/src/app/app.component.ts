@@ -12,6 +12,9 @@ import { CommonModule } from '@angular/common';
 
 export class AppComponent implements OnInit{
   title = 'client-angular'
+  manteInEstinzione: Mante[] = [];
+  manteNonEstinzione: Mante[] = [];
+  
   mante: Mante[] = [];
     constructor(private http: HttpClient) {}
 
@@ -23,11 +26,17 @@ export class AppComponent implements OnInit{
         next: (response) => {
           this.mante = response.mante;
           console.log('Received data:', this.mante);
+          this.manteInEstinzione = this.mante.filter(mante => mante.estinzione);
+          this.manteNonEstinzione = this.mante.filter(mante => !mante.estinzione);
         },
         error: (error) => {
           console.error('Error fetching data:', error);
         }
       });
+
+    
+      
+      
   }
 
 
